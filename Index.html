@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hồ Sơ Tuyệt Mật ⚠️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pangolin', cursive;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Container chuẩn size điện thoại */
+        .app-container {
+            width: 100%;
+            max-width: 430px; /* Size chuẩn iPhone Promax */
+            height: 100vh;
+            position: relative;
+            background-color: #222;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .active {
+            display: flex;
+        }
+
+        h1 {
+            color: #ff4757;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Nút bấm tấu hài */
+        .btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-family: 'Pangolin', cursive;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            transition: transform 0.2s;
+            animation: pulse 1.5s infinite;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Lưới ảnh Polaroid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .polaroid img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .polaroid span {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Nghiêng ảnh cho ngẫu nhiên */
+        .polaroid:nth-child(odd) { transform: rotate(-3deg); }
+        .polaroid:nth-child(even) { transform: rotate(4deg); }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Màn hình chúc mừng */
+        #screen3 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            color: #333;
+        }
+
+        #screen3 h1 {
+            color: #ff4757;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div id="screen1" class="screen active">
+            <h1>⚠️ CẢNH BÁO MẬT ⚠️</h1>
+            <p>Hệ thống đã phát hiện một sinh vật ngoài hành tinh vừa hạ phàm vào ngày này năm xưa.</p>
+            <p>Đối tượng có tính sát thương cực cao (nhất là nhan sắc).</p>
+            <button class="btn" onclick="nextScreen(2)">Xác nhận xem nhân dạng 😈</button>
+        </div>
+
+        <div id="screen2" class="screen">
+            <h1 style="font-size: 24px; color: #ffa502;">Tài liệu tuyệt mật đang được mở...</h1>
+            <p style="font-size: 15px;">Dưới đây là các trạng thái tiến hóa của sinh vật này!</p>
+            
+            <div class="gallery">
+                <div class="polaroid"><img src="1.png" alt="Ảnh 1"><span>Giao diện lừa tình</span></div>
+                <div class="polaroid"><img src="2.png" alt="Ảnh 2"><span>Ngủ dậy chưa đánh răng</span></div>
+                <div class="polaroid"><img src="3.png" alt="Ảnh 3"><span>Thấy đồ ăn là sáng mắt</span></div>
+                <div class="polaroid"><img src="4.png" alt="Ảnh 4"><span>Góc nghiêng... thần kinh</span></div>
+                <div class="polaroid"><img src="5.png" alt="Ảnh 5"><span>Nụ cười tỏa nắng... tắt luôn</span></div>
+                <div class="polaroid"><img src="6.png" alt="Ảnh 6"><span>Đang nhây thì bị chộp</span></div>
+                <div class="polaroid"><img src="7.png" alt="Ảnh 7"><span>Trạng thái mỏ hỗn</span></div>
+                <div class="polaroid"><img src="8.png" alt="Ảnh 8"><span>Hệ điều hành chạy bằng trà sữa</span></div>
+            </div>
+
+            <br>
+            <button class="btn" onclick="nextScreen(3)">Chốt lại vấn đề là... 👉</button>
+            <br><br>
+        </div>
+
+        <div id="screen3" class="screen">
+            <h1>🎉 HAPPY BIRTHDAY CON ĐIÊN 🎉</h1>
+            <p>Trêu tí thôi chứ chúc mừng sinh nhật người anh em thiện lành nhé!</p>
+            <p>Chúc tuổi mới bớt ngáo, bớt khùng, nhiều tiền, sớm có người hốt để tớ đỡ phải gánh còng lưng!</p>
+            <p><strong>Mãi keo, mãi mặn! ❤️🎂🎁</strong></p>
+            <br>
+            <button class="btn" onclick="shootConfetti()">Bắn Pháo Ăn Mừng 🎊</button>
+        </div>
+
+    </div>
+
+    <script>
+        function nextScreen(screenNumber) {
+            // Ẩn tất cả các màn hình
+            document.querySelectorAll('.screen').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            // Hiển thị màn hình được chọn
+            document.getElementById('screen' + screenNumber).classList.add('active');
+            
+            // Nếu chuyển sang màn hình 3 thì tự động bắn pháo
+            if(screenNumber === 3) {
+                setTimeout(shootConfetti, 500);
+            }
+            
+            // Tự động cuộn lên đầu màn hình (dành cho điện thoại)
+            document.querySelector('.app-container').scrollTop = 0;
+        }
+
+        function shootConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+                }));
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+                }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
